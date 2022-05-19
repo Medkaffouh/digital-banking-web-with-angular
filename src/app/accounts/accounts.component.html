@@ -30,7 +30,7 @@
               <tbody>
                 <tr *ngFor="let op of accountDetails.accountOperationDTOS">
                   <td>{{op.id}}</td>
-                  <td>{{op.operationDate | date : 'dd-MM-yyyy'}}</td>
+                  <td>{{op.operationDate | date : 'dd-MM-yyyy-HH-mm-ss'}}</td>
                   <td>{{op.type}}</td>
                   <td class="text-end">{{op.amount | number : '1.2-2'}}</td>
                 </tr>
@@ -38,7 +38,7 @@
             </table>
             <ul class="nav nav-pills">
               <li *ngFor="let item of [].constructor(accountDetails.totalPages);let page=index">
-                <a (click)="goToPage(page)" class="btn btn-outline-info ms-1">{{page}}</a>
+                <a [ngClass]="page==currentPage?'btn-info':'btn-outline-info'" (click)="goToPage(page)" class="btn btn-outline-info text-black ms-1">{{page}}</a>
               </li>
             </ul>
           </ng-container>
