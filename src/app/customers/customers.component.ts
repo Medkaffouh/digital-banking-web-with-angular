@@ -35,6 +35,8 @@ export class CustomersComponent implements OnInit {
   }
 
   handleDeleteCustomer(c:Customer){
+    let conf = confirm("are you sure?");
+    if(!conf) return;
     this.customerService.deleteCustomer(c.id).subscribe({
       next : res => {
         this.customers=this.customers.pipe(
