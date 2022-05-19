@@ -1,7 +1,4 @@
 <div class="container mt-2">
-  <div *ngIf="errorMessage" class="text-danger">
-    {{errorMessage}}
-  </div>
   <div class="card" *ngIf="customers">
     <div class="card-header">Customers</div>
     <div class="card-body">
@@ -14,7 +11,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let c of customers">
+          <tr *ngFor="let c of customers | async">
             <td>{{c.id}}</td>
             <td>{{c.name}}</td>
             <td>{{c.email}}</td>
