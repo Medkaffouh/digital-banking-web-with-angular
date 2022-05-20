@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import {catchError, Observable, throwError} from 'rxjs';
 import { AccountDetails } from '../model/account.model';
 import { AccountsService } from '../services/accounts.service';
 
@@ -15,6 +15,7 @@ export class AccountsComponent implements OnInit {
   pageSize : number = 5;
   accountObservable! : Observable<AccountDetails>
   operationFormGroup! : FormGroup;
+  errorMessage! : string;
   constructor(private fb : FormBuilder, private accountService : AccountsService) { }
 
   ngOnInit(): void {
@@ -31,7 +32,12 @@ export class AccountsComponent implements OnInit {
 
   handleSearchAccount(){
     let accountId : string = this.accountFormGroup.value.accountId;
-    this.accountObservable=this.accountService.getAccount(accountId,this.currentPage,this.pageSize);
+    this.accountObservable=this.accountService.getAccount(accountId,this.currentPage,this.pageSize).pipe(
+      catchError(err => {
+        this.errorMessage=err.message;
+        return throwError(err);
+      })
+    );
   }
 
   goToPage(page : number){
@@ -77,7 +83,7 @@ export class AccountsComponent implements OnInit {
         }
       });
     }
-
+  this.operationFormGroup.reset();
   }
 
 }
