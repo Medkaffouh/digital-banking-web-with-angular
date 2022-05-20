@@ -45,7 +45,42 @@
         </div>
       </div>
     </div>
-    <div class="col col-md-6"></div>
+    <div class="col col-md-6">
+      <div class="card" *ngIf="accountObservable">
+      <div class="card-header">Operations</div>
+      <div class="card-body">
+        <form [formGroup]="operationFormGroup" (ngSubmit)="handleAccountOperation()" method="post">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="operationType" value="DEBIT" id="debit">
+            <label for="debit" class="form-check-label">DEBIT</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="operationType" value="CREDIT" id="credit">
+            <label for="credit" class="form-check-label">CREDIT:</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="operationType" value="TRANSFER" id="transfer">
+            <label for="transfer" class="form-check-label">TRANSFER:</label>
+          </div>
+          <div class="mt-3" *ngIf="operationFormGroup.value.operationType=='TRANSFER'">
+            <label class="form-label">Account Destination :</label>
+            <input type="text" formControlName="accountDestination" class="form-control">
+          </div>
+          <div class="mt-3">
+            <label class="form-label">Amount :</label>
+            <input type="text" formControlName="amount" class="form-control">
+          </div>
+          <div class="mt-3">
+            <label class="form-label">Description :</label>
+            <input type="text" formControlName="description" class="form-control">
+          </div>
+          <div class="d-grid mt-3">
+            <button class="btn btn-success">Save Operation</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   </div>
 
 </div>

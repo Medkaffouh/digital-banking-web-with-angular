@@ -14,11 +14,18 @@ export class AccountsComponent implements OnInit {
   currentPage : number = 0;
   pageSize : number = 5;
   accountObservable! : Observable<AccountDetails>
+  operationFormGroup! : FormGroup;
   constructor(private fb : FormBuilder, private accountService : AccountsService) { }
 
   ngOnInit(): void {
     this.accountFormGroup=this.fb.group({
       accountId : this.fb.control('')
+    });
+    this.operationFormGroup=this.fb.group({
+      operationType : this.fb.control(null),
+      amount : this.fb.control(0),
+      description : this.fb.control(null),
+      accountDestination : this.fb.control(null)
     })
   }
 
@@ -30,6 +37,19 @@ export class AccountsComponent implements OnInit {
   goToPage(page : number){
     this.currentPage = page;
     this.handleSearchAccount();
+  }
+
+  handleAccountOperation(){
+    let accountId : string = this.accountFormGroup.value.accountId;
+    let operationType = this.accountFormGroup.value.operationType;
+    if(operationType=='DEBIT'){
+
+    }else  if(operationType =='CREDIT'){
+
+    }else if(operationType == 'TRANSFER'){
+
+    }
+
   }
 
 }
