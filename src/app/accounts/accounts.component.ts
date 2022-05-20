@@ -41,13 +41,41 @@ export class AccountsComponent implements OnInit {
 
   handleAccountOperation(){
     let accountId : string = this.accountFormGroup.value.accountId;
-    let operationType = this.accountFormGroup.value.operationType;
+    let operationType = this.operationFormGroup.value.operationType;
+    let amount : number = this.operationFormGroup.value.amount;
+    let description : string = this.operationFormGroup.value.description;
+    let accountDestination : string = this.operationFormGroup.value.accountDestination;
     if(operationType=='DEBIT'){
+      this.accountService.debit(accountId,amount,description).subscribe({
+        next : (data) => {
+          alert("Success Debit");
+          this.handleSearchAccount();
 
+        },
+        error : (err) => {
+          console.log(err);
+        }
+      });
     }else  if(operationType =='CREDIT'){
-
+      this.accountService.credit(accountId,amount,description).subscribe({
+        next : (data) => {
+          alert("Success Credit");
+          this.handleSearchAccount();
+        },
+        error : (err) => {
+          console.log(err);
+        }
+      });
     }else if(operationType == 'TRANSFER'){
-
+      this.accountService.transfer(accountId,accountDestination,amount,description).subscribe({
+        next : (data) => {
+          alert("Success Transfer");
+          this.handleSearchAccount();
+        },
+        error : (err) => {
+          console.log(err);
+        }
+      });
     }
 
   }
