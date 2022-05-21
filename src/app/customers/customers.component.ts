@@ -4,6 +4,7 @@ import {CustomerService} from "../services/customer.service";
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Customer } from '../model/customer.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-customers',
@@ -14,7 +15,7 @@ export class CustomersComponent implements OnInit {
   customers! : Observable<Array<Customer>>;
   errorMessage! : string; // OU errorMessage : string | undefined
   searchFormGroup : FormGroup | undefined;
-  constructor(private customerService:CustomerService,private fb:FormBuilder) { }
+  constructor(private customerService:CustomerService,private fb:FormBuilder, private router : Router) { }
 
   ngOnInit(): void {
     this.searchFormGroup=this.fb.group({
@@ -53,4 +54,7 @@ export class CustomersComponent implements OnInit {
     })
   }
 
+  handleCustomerAccounts(c: Customer) {
+    this.router.navigateByUrl("/customer-accounts/"+c.id,{state : c});
+  }
 }
