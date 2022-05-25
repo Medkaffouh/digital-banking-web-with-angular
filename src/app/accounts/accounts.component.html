@@ -21,7 +21,7 @@
           </ng-template>
           <ng-container *ngIf="accountObservable | async as accountDetails; else errorTemplate">
             <div class="mt-2">
-              <label>Account Id : </label>
+              <label>Account Id :</label>
               <label><strong>{{accountDetails.accountId}}</strong></label>
             </div>
             <div class="mt-2">
