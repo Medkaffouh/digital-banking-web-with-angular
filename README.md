@@ -1,27 +1,10 @@
-# DigitalBankingWebWithAngular
+# Digital Banking Web With Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+### In this page i listed all the users of the bank with the possibility to delete an user or show all the accounts the user have in the bank.
+![ebank-screen-1](https://user-images.githubusercontent.com/87676772/175377246-0c472e4a-af81-435a-85b0-c57fdc490da0.jpg)
 
-## Development server
+### In the left card you can search for an account by its id and check the balance and all the activities shown in the form of pagination, in the right card we have the ability to make three types of operation DEBIT, CREDIT, TRANSFER.
+![ebank-screen-2](https://user-images.githubusercontent.com/87676772/175377326-ba36b33f-6a23-4491-a32b-b63d38489018.jpg)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### A simple register form to add new customer.
+![ebank-screen-3](https://user-images.githubusercontent.com/87676772/175377349-993babd2-33b2-4308-8f62-afdeaaf83673.jpg)
